@@ -1,0 +1,35 @@
+# Options strategy configuration — read by the options-bot CLI only.
+# Do not modify without user confirmation.
+# To update thresholds, tell Synapse explicitly: "set my min delta to 0.20"
+
+# Trading strategy: "cash_secured_puts" or "covered_calls"
+strategy: "cash_secured_puts"
+
+# E*TRADE accounts. The 'default' suffix is used when no --account flag is passed.
+# Add additional accounts as needed (e.g. roth_ira: "3421").
+accounts:
+  default: "1234"
+
+# Entry thresholds for filtering options opportunities
+thresholds:
+  min_days_to_expiry: 30
+  max_days_to_expiry: 60
+  target_days_to_expiry: 45
+  min_annualized_yield: 0.12
+  min_delta: 0.15
+  max_delta: 0.35
+  min_open_interest: 100
+  min_volume: 10
+  max_spread_pct: 0.10
+
+# Exit thresholds for managing open positions
+exit_thresholds:
+  profit_target_pct: 0.50
+  max_loss_multiple: 2.0
+  low_dte_threshold: 21
+  low_dte_profit_target: 0.25
+
+# Switch rule: a new opportunity's annualized yield must exceed an open
+# position's forward annualized yield by this many percentage points to
+# justify closing the position early (covers commissions/slippage).
+switch_yield_advantage_pts: 5

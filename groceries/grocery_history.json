@@ -1,0 +1,5 @@
+{
+  "version": "1.0",
+  "description": "Grocery purchase history seeded from Amazon Fresh order history. Items ordered by purchase frequency (most frequent first). Each item includes preferred options in priority order plus average/reference price for anomaly detection.",
+  "items": []
+}
