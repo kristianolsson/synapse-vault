@@ -3,8 +3,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-if [ -f "PERSONAL.md" ]; then
-  echo "PERSONAL.md already exists — nothing to do. Edit it directly if you want to change your details."
+if [ -f "PERSONAL.md" ] && ! grep -q "Run \`./setup.sh\`" PERSONAL.md; then
+  echo "PERSONAL.md already looks customized — nothing to do. Edit it directly if you want to change your details."
   exit 0
 fi
 
@@ -29,13 +29,6 @@ ${ADDITIONAL}
 EOF
 fi
 
-if [ -f ".gitignore" ] && grep -qxF "PERSONAL.md" .gitignore; then
-  grep -vxF -e '# Personal context — never committed in this template repo' -e 'PERSONAL.md' .gitignore > .gitignore.tmp && mv .gitignore.tmp .gitignore
-  echo
-  echo "Done — wrote PERSONAL.md, and un-ignored it in .gitignore (this is your vault now, not the public template — go ahead and commit it: git add PERSONAL.md .gitignore && git commit -m \"Track PERSONAL.md\")."
-else
-  echo
-  echo "Done — wrote PERSONAL.md."
-fi
-
+echo
+echo "Done — wrote PERSONAL.md. It's tracked in git like any other file in your vault — commit it whenever you're ready (git add PERSONAL.md && git commit)."
 echo "Edit it any time; CLAUDE.md and GEMINI.md both auto-import it via @PERSONAL.md."

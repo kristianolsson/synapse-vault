@@ -16,9 +16,9 @@ The public, generic protocol-layer template for **Synapse** — a personal manag
 
 ## The `PERSONAL.md` pattern
 
-`CLAUDE.md` and `GEMINI.md` are both fully generic — neither contains your name, family, or location. Instead, both import a single file via `@PERSONAL.md` (a syntax [Claude Code](https://code.claude.com/docs/en/memory) and [Gemini CLI](https://geminicli.com/docs/cli/gemini-md/) both support), which is gitignored here and never committed. One source of personal context feeds both providers, instead of duplicating it into two files that could drift apart.
+`CLAUDE.md` and `GEMINI.md` are both fully generic — neither contains your name, family, or location. Instead, both import a single file via `@PERSONAL.md` (a syntax [Claude Code](https://code.claude.com/docs/en/memory) and [Gemini CLI](https://geminicli.com/docs/cli/gemini-md/) both support). One source of personal context feeds both providers, instead of duplicating it into two files that could drift apart.
 
-Run `./setup.sh` after cloning to generate your own `PERSONAL.md` interactively, or copy `PERSONAL.md.example` by hand.
+Run `./setup.sh` after cloning to fill in your own `PERSONAL.md` interactively, or edit the file directly by hand.
 
 ## Using this with Synapse Engine
 
@@ -33,7 +33,7 @@ This repo is a public template — don't use it as your live vault directly. Ins
    git clone git@github.com:kristianolsson/synapse-vault.git my-vault
    cd my-vault
    ```
-2. Run `./setup.sh` to create your `PERSONAL.md`. It's fine to do this before detaching in step 3 below — until it runs, `CLAUDE.md`/`GEMINI.md`'s `@PERSONAL.md` import just warns the file doesn't exist yet, which is harmless. `setup.sh` also automatically un-gitignores `PERSONAL.md` once it's written, since at that point this is your real vault, not the public template — it'll print the exact commands to commit it.
+2. Run `./setup.sh` to fill in your `PERSONAL.md` with your name, location, and any other context. It's a normal tracked file, just like everything else in this vault — no special git handling needed.
 3. Detach it from this repo and point it at your own private repo:
    ```bash
    rm -rf .git
