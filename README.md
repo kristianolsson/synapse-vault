@@ -1,6 +1,6 @@
 # Synapse Vault
 
-The public, generic protocol-layer template for **Synapse** — a personal management system where an AI CLI agent (Claude Code, Antigravity CLI, or Gemini CLI) operates on an Obsidian-style vault of notes, tasks, links, and reminders, driven non-interactively by [Synapse Engine](https://github.com/kristianolsson/synapse-engine).
+The public, generic protocol-layer template for **Synapse** — a personal management system where an AI CLI agent (Claude Code, Antigravity CLI, or Gemini CLI) operates on an Obsidian-style vault of notes, tasks, links, and reminders, driven non-interactively by [Synapse Engine](https://github.com/kristianolsson/synapse-engine). It's a plain folder of Markdown files — open it directly in [Obsidian](https://obsidian.md) to browse, search, and edit your notes with graph view and backlinks, independent of any AI tooling.
 
 > This repo ships operating manuals and module protocols only — no personal data. Clone it to start your own private vault.
 
@@ -20,9 +20,11 @@ The public, generic protocol-layer template for **Synapse** — a personal manag
 
 Run `./setup.sh` after cloning to fill in your own `PERSONAL.md` interactively, or edit the file directly by hand.
 
-## Using this with Synapse Engine
+## Using this vault
 
-[Synapse Engine](https://github.com/kristianolsson/synapse-engine) is the ingestion/dispatch layer that runs the AI CLI against this vault on a schedule and over Email/Telegram. This repo is the vault it operates on — point its `VAULT_PATH` at your clone.
+The simplest way: `cd` into this vault and run `claude` (or `gemini`) directly for an interactive session — both auto-discover `CLAUDE.md`/`GEMINI.md` in the current directory, no other setup required.
+
+For automation — Email/Telegram ingestion, scheduled reminders, so you don't have to start a session yourself — pair it with [Synapse Engine](https://github.com/kristianolsson/synapse-engine), which runs the AI CLI against this vault non-interactively. Point its `VAULT_PATH` at your clone.
 
 ## Getting started with your own private vault
 
