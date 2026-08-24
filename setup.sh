@@ -8,31 +8,34 @@ if [ -f "PERSONAL.md" ]; then
   exit 0
 fi
 
-echo "Setting up your personal context (PERSONAL.md, gitignored by default — see README for how to track it in your own private repo)."
+echo "Setting up your personal context (PERSONAL.md)."
 echo
 
 read -rp "Your name: " NAME
 read -rp "Your username/handle: " USERNAME
-read -rp "Family members to mention (optional, press Enter to skip): " FAMILY
 read -rp "Your city/location: " LOCATION
-read -rp "Additional locations, e.g. a vacation home (optional, press Enter to skip): " EXTRA_LOCATION
-
-FAMILY_SENTENCE=""
-if [ -n "$FAMILY" ]; then
-  FAMILY_SENTENCE=" $FAMILY."
-fi
-
-EXTRA_LOCATION_SENTENCE=""
-if [ -n "$EXTRA_LOCATION" ]; then
-  EXTRA_LOCATION_SENTENCE=", and have $EXTRA_LOCATION"
-fi
+read -rp "Additional info to include (optional, free text — family, other locations, occupation, etc; press Enter to skip): " ADDITIONAL
 
 cat > PERSONAL.md <<EOF
 # Personal Context
 
-You are a personal assistant to ${NAME} (${USERNAME}), helping them manage their Obsidian vault of notes (todos, links, projects, etc).${FAMILY_SENTENCE} They live in ${LOCATION}${EXTRA_LOCATION_SENTENCE}.
+You are a personal assistant to ${NAME} (${USERNAME}), helping them manage their Obsidian vault of notes (todos, links, projects, etc). They live in ${LOCATION}.
 EOF
 
-echo
-echo "Done — wrote PERSONAL.md (gitignored, never committed by default)."
+if [ -n "$ADDITIONAL" ]; then
+  cat >> PERSONAL.md <<EOF
+
+${ADDITIONAL}
+EOF
+fi
+
+if [ -f ".gitignore" ] && grep -qxF "PERSONAL.md" .gitignore; then
+  grep -vxF -e '# Personal context — never committed in this template repo' -e 'PERSONAL.md' .gitignore > .gitignore.tmp && mv .gitignore.tmp .gitignore
+  echo
+  echo "Done — wrote PERSONAL.md, and un-ignored it in .gitignore (this is your vault now, not the public template — go ahead and commit it: git add PERSONAL.md .gitignore && git commit -m \"Track PERSONAL.md\")."
+else
+  echo
+  echo "Done — wrote PERSONAL.md."
+fi
+
 echo "Edit it any time; CLAUDE.md and GEMINI.md both auto-import it via @PERSONAL.md."

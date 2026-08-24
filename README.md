@@ -33,7 +33,8 @@ This repo is a public template — don't use it as your live vault directly. Ins
    git clone git@github.com:kristianolsson/synapse-vault.git my-vault
    cd my-vault
    ```
-2. Detach it from this repo and point it at your own private repo:
+2. Run `./setup.sh` to create your `PERSONAL.md`. It's fine to do this before detaching in step 3 below — until it runs, `CLAUDE.md`/`GEMINI.md`'s `@PERSONAL.md` import just warns the file doesn't exist yet, which is harmless. `setup.sh` also automatically un-gitignores `PERSONAL.md` once it's written, since at that point this is your real vault, not the public template — it'll print the exact commands to commit it.
+3. Detach it from this repo and point it at your own private repo:
    ```bash
    rm -rf .git
    git init
@@ -43,13 +44,14 @@ This repo is a public template — don't use it as your live vault directly. Ins
    git branch -M main
    git push -u origin main
    ```
-3. Run `./setup.sh` to create your `PERSONAL.md`. In your own **private** repo it doesn't need to stay hidden — remove the `PERSONAL.md` line from `.gitignore` and commit it normally, just like any other file in your vault.
-4. Point [Synapse Engine](https://github.com/kristianolsson/synapse-engine)'s `VAULT_PATH` at your new vault directory.
+4. Replace the placeholder E*TRADE account in `stocks/options_config.yaml` (`accounts.default: "1234"`) with your real account suffix before using the stocks/options tooling — see `stocks/PROTOCOL.md` for how it's used.
+5. Point [Synapse Engine](https://github.com/kristianolsson/synapse-engine)'s `VAULT_PATH` at your new vault directory.
 
 ## Structure
 
 - `daily/`: Daily log files — created automatically on first use, not seeded here.
 - `tasks/`, `links/`, `reminders/`, `calendar/`, `stocks/`, `groceries/`, `email/`: One module per domain — each has a `PROTOCOL.md` and, where applicable, starter data files.
+  - `stocks/options_config.yaml` ships with a **placeholder** E*TRADE account number (`1234`) — replace `accounts.default` with your real account suffix before using the options/stocks tooling.
 - `projects/`: Project notes structure — `PROTOCOL.md` and `templates/project_template.md`. Category subfolders (coding, family, finance, home, etc.) are created on demand.
 - `.claude/agents/`: Sub-agent definitions available to Claude Code.
 - `CLAUDE.md` / `GEMINI.md`: Operating manuals — see "The `PERSONAL.md` pattern" above for why personal context is split out.
