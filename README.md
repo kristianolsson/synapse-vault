@@ -3,6 +3,8 @@
 The public, generic protocol-layer template for **Synapse** — a personal management system where an AI CLI agent (Claude Code, Antigravity CLI, or Gemini CLI) operates on an Obsidian-style vault of notes, tasks, links, and reminders, driven by [Synapse Engine](https://github.com/kristianolsson/synapse-engine).
 
 > This repo ships operating manuals and module protocols only — no personal data. Clone it to start your own private vault.
+>
+> **Learn more:** [synapse](https://kristianolsson.github.io/synapse/) — a plain-language overview of what this system actually does.
 
 ![Vault Profile Pic](assets/vault-profile.jpg)
 
