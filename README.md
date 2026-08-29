@@ -53,9 +53,15 @@ This repo is a public template — don't use it as your live vault directly. Ins
 
 ## Structure
 
-- `daily/`: Daily log files — created automatically on first use, not seeded here.
-- `tasks/`, `links/`, `reminders/`, `calendar/`, `stocks/`, `groceries/`, `email/`: One module per domain — each has a `PROTOCOL.md` and, where applicable, starter data files.
+- `daily/`: Daily log files (`YYYY-MM-DD.md`) — created automatically on first use, not seeded here.
+- `tasks/`: Task management module with `master_todos.md` and task SOPs.
+- `links/`: Link repository module with `links.md` and link SOPs.
+- `reminders/`: Reminder module with `reminders.json` and reminder SOPs.
+- `calendar/`: Calendar module with calendar SOPs (data via the `calendar` CLI tool).
+- `stocks/`: Stock market module with market/options watchlists and stock SOPs (data via the `etrade` and `options-bot` CLI tools).
   - `stocks/options_config.yaml` ships with a **placeholder** E*TRADE account number (`1234`) — replace `accounts.default` with your real account suffix before using the options/stocks tooling.
+- `groceries/`: Grocery module with `grocery_history.json` and grocery SOPs (data via the `amazon-fresh` CLI tool).
+- `email/`: Email module with email SOPs (via the `gmail` CLI tool).
 - `projects/`: Project notes structure — `PROTOCOL.md` and `templates/project_template.md`. Category subfolders (coding, family, finance, home, etc.) are created on demand.
 - `.claude/agents/`: Sub-agent definitions available to Claude Code.
 - `CLAUDE.md` / `GEMINI.md`: Operating manuals — see "The `PERSONAL.md` pattern" above for why personal context is split out.
