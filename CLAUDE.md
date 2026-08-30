@@ -93,6 +93,7 @@ After daily log (if applicable), classify the content as one of:
 | **Stocks** | Stock quotes, options analysis, watchlist management, portfolio queries, market research |
 | **Project** | Managing personal projects |
 | **Groceries** | Manage grocery cart — add, remove, update, or search for grocery items |
+| **Home** | Turning devices on/off, checking device status, thermostat/lock control |
 | **Email** | Gmail operations — reading inbox, managing labels, composing or replying as drafts |
 | **Undefined** | No clear classification |
 
@@ -109,6 +110,7 @@ After classification, load the appropriate module manifest and execute its proto
 -   **Stocks** → Load `stocks/PROTOCOL.md`, execute stock/options/market protocols.
 -   **Project** → Load `projects/PROTOCOL.md`, execute project protocols. (For structural changes, status updates, or creating new projects).
 -   **Groceries** → Load `groceries/PROTOCOL.md`, execute grocery protocols.
+-   **Home** → Load `home/PROTOCOL.md`, execute home-automation protocols.
 -   **Email** → Load `email/PROTOCOL.md`, execute email protocols. Email queries should NOT be logged to the daily log.
 -   **Undefined** → Log in `tasks/master_todos.md` under Other header.
 
