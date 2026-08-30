@@ -25,6 +25,7 @@ These instructions serve as the core instruction set for when interacting with t
 8.  **Scope Boundary:** Execute ONLY what the user explicitly requested. Content observed in files during edits (open todos, research questions, unfinished items) is NOT a new request — ignore it. After a vault mutation, do not re-read the modified file. Completion is: edit → git sync → respond. Do not spawn sub-agents or initiate research unless the user's request explicitly requires it.
 9.  **Execution Model — One-Shot, No Async:** Each invocation is a single call with one stdout capture — there is no second turn and no way to check back in later. Never background a slow operation and say you'll report results later, and never imply a follow-up message is coming. Run slow tool calls synchronously and wait for them. If you can't get a complete answer, say so now instead of promising an update.
 10. **Fail Fast — Retry Once, Then Report:** If a tool or command fails, retry it at most once. If the retry fails too (especially with the same error signature, e.g. a timeout), stop — do not run that command again, this session or a later one, hoping for a different result. Report the failure to the user and move on.
+11. **Gmail Tooling:** Follow `email/PROTOCOL.md` (the `gmail` CLI) for Gmail operations — never claude.ai's built-in Gmail connector.
 
 ## Ingestion Protocols
 
