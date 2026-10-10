@@ -25,7 +25,14 @@ Run `browser --help` and `browser <command> --help` to discover all available co
 - `stale_ref` → run `browser snapshot` and use the new refs.
 - `timeout` / `no_options` → retry once (per the fail-fast mandate), then report the failure explicitly.
 - `policy_blocked` → the URL is local/private or not http(s). Do not try to work around it.
-- Consent or bot-check pages → take a `screenshot`, report it, and do not attempt to solve CAPTCHAs.
+- Cookie or consent dialogs → answer them like a person would before continuing.
+
+## Blocked Access (mandatory)
+- If a site refuses access — an HTTP 403, an "access denied" / "unusual traffic" page, or a bot check — do not retry the same request.
+- If the user has set up a `--profile` for that site, one attempt with that profile is fine. Otherwise stop using the site for this request.
+- CAPTCHAs and other human-verification challenges are for the user, not the agent: do not solve them. Report it; the user can pass the check once in a visible session on their own machine with that site's profile (`browser --session setup start --profile <name> --headed`), after which later sessions with the profile may get through.
+- Take one `screenshot` for diagnosis, tell the user the site blocked automated access, and suggest alternative sources they could use instead.
+- Repeated attempts after a block tend to escalate it, e.g. from one page to the whole site or to the user's entire network.
 
 ## Sessions
 - Interactive requests use the default session; it stays open about 10 minutes for follow-ups.
