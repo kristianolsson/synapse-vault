@@ -30,7 +30,6 @@ Run `browser --help` and `browser <command> --help` to discover all available co
 ## Blocked Access (mandatory)
 - If a site refuses access — an HTTP 403, an "access denied" / "unusual traffic" page, or a bot check — do not retry the same request.
 - If the user has set up a `--profile` for that site, one attempt with that profile is fine. Otherwise stop using the site for this request.
-- CAPTCHAs and other human-verification challenges are for the user, not the agent: do not solve them. Report it; the user can pass the check once in a visible session on their own machine with that site's profile (`browser --session setup start --profile <name> --headed`), after which later sessions with the profile may get through.
 - Take one `screenshot` for diagnosis, tell the user the site blocked automated access, and suggest alternative sources they could use instead.
 - Repeated attempts after a block tend to escalate it, e.g. from one page to the whole site or to the user's entire network.
 
