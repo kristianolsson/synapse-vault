@@ -19,6 +19,12 @@ Stock configuration is split across files in the `stocks/` directory:
 - `market_watchlist.md`: tickers for market monitoring.
 - `options_config.yaml`: options strategy settings and thresholds. Do NOT modify without explicit user confirmation.
 
+## E*TRADE Re-auth Pending
+
+If `etrade` or `options-bot` fails with error code `auth_pending`, the engine has already sent the user a re-auth prompt and queued this task to rerun automatically once they reply with the verification code. Do NOT retry the command, run another `etrade`/`options-bot` command, or delegate research — stop immediately (this overrides Mandate 10's retry-once rule).
+- Scheduled options scan: output exactly `Options scan skipped — E*TRADE re-auth pending.` and nothing else.
+- Any other request: output one sentence saying E*TRADE re-auth is pending and the request will rerun after the login completes.
+
 ## Working with Options Bot Output
 
 Opportunity scores are composite 0–100: yield (0–30 pts), downside protection (0–25 pts), delta safety (0–25 pts, lower delta scores higher), liquidity (0–15 pts), spread tightness (0–5 pts). 70+ is solid, 85+ is strong.
